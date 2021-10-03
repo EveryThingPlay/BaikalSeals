@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/dark_color"
+    android:orientation="horizontal"
+    android:padding="20dp"
+    android:layout_marginBottom="20dp"
+    android:gravity="center_vertical"
+    android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                app:cardCornerRadius="75dp"
+                android:layout_height="wrap_content">
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id = "@+id/icon"
+        android:src = "@color/wrong_data"
+        />
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                app:cardBackgroundColor="#606875"
+                app:cardCornerRadius="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/CommonText"
+                    android:id = "@+id/occupation"
+                    android:fontFamily="@font/medium"
+                    android:layout_margin="15dp"
+                    android:text = "occupation"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+
+                    />
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            style = "@style/CommonText"
+            android:text = "Фамилия"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            style = "@style/HighLightText"
+            android:text = "Иванов"
+            android:textSize="24dp"
+            android:fontFamily="@font/bold"
+            android:id = "@+id/fam"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            style = "@style/CommonText"
+            android:text = "Имя"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            style = "@style/HighLightText"
+            android:text = "Иван"
+            android:textSize="24dp"
+            android:fontFamily="@font/bold"
+            android:id = "@+id/name"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            style = "@style/CommonText"
+            android:text = "Отчество"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            style = "@style/HighLightText"
+            android:text = "Иванов"
+            android:textSize="24dp"
+            android:fontFamily="@font/bold"
+            android:id = "@+id/father"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</LinearLayout>
