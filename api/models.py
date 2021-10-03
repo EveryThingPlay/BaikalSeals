@@ -39,12 +39,13 @@ class position(models.Model):
 
 
 class CustomUser(AbstractUser):
+    id = models.ImageField(unique=True)
     role = models.CharField(choices = ROLES, default="0", max_length = 20)
     position = models.ForeignKey(position, on_delete = models.PROTECT, null=True)
     first_name = models.CharField(max_length = 50, null = False)
     last_name = models.CharField(max_length = 100)
     father_Name = models.CharField(max_length = 100)
-    email = models.EmailField(_('email adress'),unique=True)
+    email = models.EmailField(_('email adress'),unique=True, primary_key=True)
     vacationName = models.CharField(max_length = 200)
     vacationRole = models.CharField(max_length = 150)
     manager = models.CharField(max_length=150)
@@ -147,5 +148,5 @@ class task(models.Model):
     todo = models.CharField(blank=False, null=True, max_length=50)
     done = models.BooleanField(default=False)
     proof = models.TextField(blank=True, null=True)
-    owner = models.ForeignKey(CustomUser, on_delete=CASCADE)
+    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     file = models.FileField(null=True, blank=True)

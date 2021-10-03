@@ -45,10 +45,14 @@ class TaskSerializer(serializers.ModelSerializer):
         model = task
         fields = '__all__'
     def save(self):
+        email = self.validated_data['owner']
+        for i in CustomUser.objects.all():
+            if i.email == email:
+                newowner = i
         newtask = task(
             target = self.validated_data['target'],
             todo = self.validated_data['todo'],
             proof = self.validated_data['proof'],
-            owner = self.validated_data['owner']
+            owner = newowner
         )
         return newtask

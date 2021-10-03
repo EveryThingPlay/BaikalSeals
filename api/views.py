@@ -41,13 +41,16 @@ class RegisterView(APIView):
 
 class TaskListView(APIView):
     def get(self, request):
+        tasks = []
+        data = {}
         if request.user.is_authenticated == True:
-            for i in task.objects.all():
-                if str(i.owner.email) == str(request.user.email):
-                    Serializer = TaskSerializer(i)
-                    return Response(Serializer.data)
+            user = request.user
+            tasks = task.objects.filter(owner=user)
+            serializer = TaskSerializer(tasks, many=True)
+            return Response(serializer.data)
         else:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
+            
     def post(self, request):
         if request.user.is_authenticated == True:
             serializer = TaskSerializer(data=request.data)
@@ -62,19 +65,21 @@ class TaskListView(APIView):
             else:
                 return Response(serializer.errors)
     
-    def put(self, request, *args, **kwargs):
+class ModifyTaskView(APIView):
+    def put(self, request, n, *args, **kwargs,):
         if request.user.is_authenticated == True:
-            task_object = task.objects.get()
+            task_object = task.objects.get(id=n)
             data = request.data
+            email = data["owner"]
+            for i in CustomUser.objects.all():
+                if email == i.email:
+                    newowner = i
             task_object.todo = data["todo"]
-            task_object.owner = data["owner"]
+            task_object.owner = newowner
             task_object.proof = data["proof"]
             task_object.target = data["target"]
-
-
+            task_object.save()
+            serializer = TaskSerializer(task_object)
+            return Response(status=status.HTTP_200_OK)
         else:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
-
-
-
-
