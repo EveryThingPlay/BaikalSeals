@@ -1,1 +1,1 @@
-# BaikalSeals
+# BaikalSeals - iOS product version
